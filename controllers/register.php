@@ -4,7 +4,7 @@
     include('../config/db.php');
     
     // Error & success messages
-    global $success_msg, $email_exist, $u_NameErr, $_emailErr, $_passwordErr;
+    global $success_msg, $email_exist, $tos_err, $user_exist, $u_NameErr, $_emailErr, $_passwordErr;
     global $uNameEmptyErr, $emailEmptyErr, $passwordEmptyErr, $email_verify_err, $email_verify_success;
     
 
@@ -19,20 +19,30 @@
 
         // check if email already exist
         $email_check_query = mysqli_query($conn, "SELECT * FROM users WHERE email = '{$email}' ");
-        $rowCount = mysqli_num_rows($email_check_query);
+        $emailCount = mysqli_num_rows($email_check_query);
 
+        // check if user already exist
+        $user_check_query = mysqli_query($conn, "SELECT * FROM users WHERE username = '{$username}' ");
+        $userCount = mysqli_num_rows($user_check_query);
 
         // PHP validation
         // Verify if form values are not empty
         if(!empty($username) && !empty($email) && !empty($password)){
             
             // check if user email already exist
-            if($rowCount > 0) {
+            if($emailCount > 0) {
                 $email_exist = '
                     <div class="px-1 text-sm text-red-600">
                         User with email already exist!
                     </div>
                 ';
+			}
+            if($userCount > 0) {
+                $user_exist = '
+                    <div class="px-1 text-sm text-red-600">
+                        Username is already taken!
+                    </div>
+                ';	
             } else {
                 // clean the form data before sending to database
                 $_user_name = mysqli_real_escape_string($conn, $username);
@@ -53,10 +63,10 @@
                     $_emailErr = '<div class="px-1 text-sm text-red-600">
                             Email format is invalid.
                         </div>';
-                }
+                }	
                 if(!preg_match("/^(?=.*\d)(?=.*[@#\-_$%^&+=ยง!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=ยง!\?]{8,20}$/", $_password)) {
                     $_passwordErr = '<div class="px-1 text-sm text-red-600">
-                             Password must contain atleast one special chacter, lowercase, uppercase or digit.
+                             Password must contain atleast one special chacter, lowercase, uppercase and digit.
                         </div>';
                 }
                 
@@ -72,16 +82,28 @@
                     $password_hash = password_hash($password, PASSWORD_BCRYPT);
 
                     // Query
+					if (isset($_POST['checkbox'])) {
                     $sql = "INSERT INTO users (username, email, password, token, is_active,
                     date_time) VALUES ('{$username}', '{$email}', '{$password_hash}', 
                     '{$token}', '0', now())";
                     
+					//set success message, in the future wait for verification email
+					$success_msg = '                    <div class="px-1 text-sm text-red-600">
+                        Mission Success!</div>';
                     // Create mysql query
                     $sqlQuery = mysqli_query($conn, $sql);
-                    
-                    if(!$sqlQuery){
+					                    if(!$sqlQuery){
                         die("MySQL query failed!" . mysqli_error($conn));
                     } 
+    // Checkbox isn't selected
+} else {
+					$tos_err = '                    <div class="px-1 text-sm text-red-600">
+                        You must accept the terms and conditions along with the information data policy!</div>';
+   // Alternate code
+}
+				
+                    
+
 
 /*                     // Send verification email
                     if($sqlQuery) {

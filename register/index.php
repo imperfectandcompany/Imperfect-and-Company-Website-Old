@@ -63,7 +63,8 @@
                         This is required to access restricted sections and submit forms
 						                    <?php echo $success_msg; ?>
                     <?php echo $email_exist; ?>
-
+                    <?php echo $user_exist; ?>
+					<?php echo $tos_err; ?>
                     <?php echo $email_verify_err; ?>
                     <?php echo $email_verify_success; ?>
                     </div>
@@ -139,7 +140,7 @@
                             </div>
                             <div class="flex justify-start">
                                 <label class="block text-gray-500 font-bold my-4 flex items-center">
-                                    <input class="leading-loose text-pink-600 top-0" type="checkbox"/>
+                                    <input class="leading-loose text-pink-600 top-0" name="checkbox" type="checkbox"/>
                                     <span class="ml-2 text-sm py-2 text-gray-600 text-left">I accept the
                                           <a href="#"
                                              class="font-semibold text-black border-b-2 border-gray-200 hover:border-gray-500">
