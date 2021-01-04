@@ -33,6 +33,11 @@
 
 <body>
 
+    <!-- Header -->
+    <?php include('../header.php'); ?>
+
+    <!-- Login script -->
+    <?php include('../controllers/register.php'); ?>
 
     <div class="flex justify-center text-xl font-bold tracking-widest text-gray-300">
 <h1>Imperfect and Company</h1>
@@ -52,28 +57,39 @@
             <div class="w-full relative">
                 <div class="md:mt-6">
                     <div class="text-center font-semibold text-black">
-                        Register for an account
+                        Register
                     </div>
                     <div class="text-center font-base text-black">
                         This is required to access restricted sections and submit forms
+						                    <?php echo $success_msg; ?>
+                    <?php echo $email_exist; ?>
+
+                    <?php echo $email_verify_err; ?>
+                    <?php echo $email_verify_success; ?>
                     </div>
-                    <form class="mt-8" x-data="{password: '',password_confirm: ''}">
+                    <form class="mt-8" x-data="{password: '',password_confirm: ''}" method="post">
                         <div class="mx-auto max-w-lg ">
                             <div class="py-1">
                                 <span class="px-1 text-sm text-gray-600">Username</span>
-                                <input placeholder="" type="text"
+									<?php echo $uNameEmptyErr; ?>
+    <?php echo $u_NameErr; ?>
+                                <input placeholder="" type="text" name="username" 
                                        class="text-md block px-3 py-2 rounded-lg w-full
                 bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">
                             </div>
                             <div class="py-1">
                                 <span class="px-1 text-sm text-gray-600">Email</span>
-                                <input placeholder="" type="email"
+								                        <?php echo $_emailErr; ?>
+                        <?php echo $emailEmptyErr; ?>
+                                <input placeholder="" type="email" name="email" id="email_signin"
                                        class="text-md block px-3 py-2 rounded-lg w-full
                 bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">
                             </div>
                             <div class="py-1">
                                 <span class="px-1 text-sm text-gray-600">Password</span>
-                                <input placeholder="" type="password" x-model="password"
+								                        <?php echo $_passwordErr; ?>
+                        <?php echo $passwordEmptyErr; ?>
+                                <input placeholder="" name="password"  type="password" x-model="password"
                                        class="text-md block px-3 py-2 rounded-lg w-full
                 bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">
                             </div>
@@ -135,7 +151,7 @@
                                     </span>
                                 </label>
                             </div>
-                            <button class="mt-3 text-lg font-semibold
+                            <button type="submit" name="submit" id="submit"  class="mt-3 text-lg font-semibold
             bg-gray-800 w-full text-white rounded-lg
             px-6 py-3 block shadow-xl hover:text-white hover:bg-black">
                                 Register
