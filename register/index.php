@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Imperfect and Company</title>
+        <title>Imperfect and Company - Register</title>
 		<!-- CSS -->
 		<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 		<!-- JS -->
 		<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
 		<!-- Desired link -->
-		<link rel="canonical" href="https://imperfectandcompany.com/">
+		<link rel="canonical" href="https://imperfectandcompany.com/register">
 		<!-- Favicon -->
 		<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -20,8 +20,7 @@
 		<meta name="msapplication-TileColor" content="#2d89ef">
 		<meta property="og:title" content="Imperfect and Company - Internships Available" />
 		<meta property="og:description" content="Imperfect but not alone, you got company. Imperfect and Company is accepting internship applications." />
-		<!-- switch to 'https' oncet the new cdn subdomain ssl cert is mitigated -->
-		<meta property="og:image" content="http://cdn.imperfectandcompany.com/assets/22543831959.png" />
+		<meta property="og:image" content="https://cdn.imperfectandcompany.com/assets/22543831959.png" />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
 		<meta name="theme-color" content="#ffffff">
@@ -60,8 +59,7 @@
                         Register
                     </div>
                     <div class="text-center font-base text-black">
-                        This is required to access restricted sections and submit forms
-						                    <?php echo $success_msg; ?>
+					<?php echo $success_msg; ?>
                     <?php echo $email_exist; ?>
                     <?php echo $user_exist; ?>
 					<?php echo $tos_err; ?>
@@ -96,7 +94,9 @@
                             </div>
                             <div class="py-1">
                                 <span class="px-1 text-sm text-gray-600">Confirm Password</span>
-                                <input placeholder="" type="password" x-model="password_confirm"
+								                        <?php echo $cpasswordEmptyErr; ?>
+                        <?php echo $passMatchErr; ?>
+                                <input placeholder="" name="confirmpass" type="password" x-model="password_confirm"
                                        class="text-md block px-3 py-2 rounded-lg w-full
                 bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">
                             </div>
@@ -182,7 +182,7 @@
 		      <div class="grid col-span-1 md:flex pb-20 items-center mt-10 justify-center">
 
         <div class="md:mr-4">
-            <img class="md:w-40" src="http://cdn.imperfectandcompany.com/assets/483193522.png" alt="">
+            <img class="md:w-40" src="https://cdn.imperfectandcompany.com/assets/483193522.png" alt="">
         </div>
         <div class="md:border-l-2 pl-4 p-2 col-span-2 text-justify md:w-1/2 mt-10 md:mt-0">
             <p class="mt-4">

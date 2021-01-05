@@ -5,7 +5,7 @@
     
     // Error & success messages
     global $success_msg, $email_exist, $tos_err, $user_exist, $u_NameErr, $_emailErr, $_passwordErr;
-    global $uNameEmptyErr, $emailEmptyErr, $passwordEmptyErr, $email_verify_err, $email_verify_success;
+    global $uNameEmptyErr, $emailEmptyErr, $passwordEmptyErr, $cpasswordEmptyErr, $passMatchErr, $email_verify_err, $email_verify_success;
     
 
 	
@@ -13,9 +13,15 @@
     $_user_name = $_email = $_password = "";
 
     if(isset($_POST["submit"])) {
-        $username     = $_POST["username"];
+        $username      = $_POST["username"];
         $email         = $_POST["email"];
         $password      = $_POST["password"];
+		$cpassword = $_POST['confirmpass'];
+
+			if (!isset($_POST['checkbox'])) { 
+			$tos_err = '                    <div class="px-1 text-sm text-red-600">
+                        You must accept the terms and conditions along with the information data policy!</div>';
+			}
 
         // check if email already exist
         $email_check_query = mysqli_query($conn, "SELECT * FROM users WHERE email = '{$email}' ");
@@ -27,9 +33,9 @@
 
         // PHP validation
         // Verify if form values are not empty
-        if(!empty($username) && !empty($email) && !empty($password)){
+        if(!empty($username) && !empty($email) && !empty($password) && !empty($cpassword)){
             
-            // check if user email already exist
+            // check if user email already exists
             if($emailCount > 0) {
                 $email_exist = '
                     <div class="px-1 text-sm text-red-600">
@@ -37,12 +43,19 @@
                     </div>
                 ';
 			}
+			//check if username already exists
             if($userCount > 0) {
                 $user_exist = '
                     <div class="px-1 text-sm text-red-600">
                         Username is already taken!
                     </div>
                 ';	
+			}
+				// check if password matches confirm password
+            if($password !== $cpassword){
+                $passMatchErr = '<div class="px-1 text-sm text-red-600">
+                    Password and confirm password do not match.
+                </div>';				
             } else {
                 // clean the form data before sending to database
                 $_user_name = mysqli_real_escape_string($conn, $username);
@@ -69,6 +82,7 @@
                              Password must contain atleast one special chacter, lowercase, uppercase and digit.
                         </div>';
                 }
+			
                 
                 // Store the data in db, if all the preg_match condition met
                 if((preg_match("/^[a-zA-Z ]*$/", $_user_name)) &&
@@ -88,19 +102,14 @@
                     '{$token}', '0', now())";
                     
 					//set success message, in the future wait for verification email
-					$success_msg = '                    <div class="px-1 text-sm text-red-600">
+					$success_msg = '                    <div class="px-1 text-sm text-green-600">
                         Mission Success!</div>';
                     // Create mysql query
                     $sqlQuery = mysqli_query($conn, $sql);
 					                    if(!$sqlQuery){
                         die("MySQL query failed!" . mysqli_error($conn));
-                    } 
-    // Checkbox isn't selected
-} else {
-					$tos_err = '                    <div class="px-1 text-sm text-red-600">
-                        You must accept the terms and conditions along with the information data policy!</div>';
-   // Alternate code
-}
+                    }
+	
 				
                     
 
@@ -140,28 +149,29 @@
                         }
                     } */
                 }
-            }
         } else {
-            if(empty($firstname)){
+            if(empty($username)){
                 $uNameEmptyErr = '<div class="px-1 text-sm text-red-600">
-                    First name can not be blank.
-                </div>';
-            }
-            if(empty($lastname)){
-                $lNameEmptyErr = '<div class="px-1 text-sm text-red-600">
-                    Last name can not be blank.
+                    Username cannot be blank.
                 </div>';
             }
             if(empty($email)){
                 $emailEmptyErr = '<div class="px-1 text-sm text-red-600">
-                    Email can not be blank.
+                    Email cannot be blank.
                 </div>';
             }
             if(empty($password)){
                 $passwordEmptyErr = '<div class="px-1 text-sm text-red-600">
-                    Password can not be blank.
+                    Password cannot be blank.
                 </div>';
-            }            
+            }      
+            if(empty($cpassword)){
+                $cpasswordEmptyErr = '<div class="px-1 text-sm text-red-600">
+                    Confirm password cannot be blank.
+                </div>';
+            }    
         }
     }
+		}
+	}
 ?>
