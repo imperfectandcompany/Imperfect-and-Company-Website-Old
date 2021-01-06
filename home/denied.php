@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -37,6 +38,11 @@
 
     </div>
 
+
+
+
+
+
 <div class="w-full h-screen">
 
         <section class="bg-white py-10">
@@ -44,26 +50,16 @@
                 <h2 class="text-2xl font-semibold text-gray-800">Opportunities</h2>
 
                 <div class="flex flex-col items-center justify-center mt-6">
-                    <a class="max-w-2xl w-full block bg-white shadow-md rounded-md border-t-4 border-indigo-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" href="#">
-                        <div class="flex items-center justify-between px-4 py-2">
-                            <h3 class="text-lg font-medium text-gray-700">Fall 2021 Internship <span class="bg-indigo-600 text-white rounded p-1">New</span></h3>
-                            <span class="block text-gray-600 font-light text-sm">Posted on 1/3/2021</span>
-                        </div>
-                    </a>
-            </div>
-			
-                <div class="flex flex-col items-center justify-center mt-6">
-                    <a class="max-w-2xl w-full block bg-white shadow-md rounded-md border-t-4 border-indigo-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" href="#">
-                        <div class="flex items-center justify-between px-4 py-2">
-                            <h3 class="text-lg font-medium text-gray-700">Front-end Developer <span class="bg-indigo-600 text-white rounded p-1">Paid</span></h3>
-                            <span class="block text-gray-600 font-light text-sm">Posted on 1/3/2021</span>
+                    <a class="max-w-2xl w-full block bg-white shadow-md rounded-md border-t-4 border-red-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" href="#">
+                        <div class="flex items-center px-4 py-2">
+                            <h3 class="text-lg font-medium text-gray-700 text-center">You must be logged in to acccess this page.</h3>
                         </div>
                     </a>
             </div>
 			
 			                <div class="flex items-center justify-center mt-12">
-                    <a class="flex items-center text-gray-600 hover:underline hover:text-gray-500" href="#">
-                        <span>View More</span>
+                    <a class="flex items-center text-gray-600 hover:underline hover:text-gray-500" href="../index.php">
+                        <span>Go back</span>
 
                         <svg class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -74,73 +70,9 @@
 
         </section>                             
 
-<div>
-      <section class="text-gray-700">
-        <div class="container px-5 py-12 mx-auto">
-          <div class="text-center mb-10">
-            <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">
-              Frequently Asked Questions
-            </h1>
-            <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
-              The most commonly asked questions about our business works and what
-              we do.
-            </p>
-          </div>
-          <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
-            <div class="w-full lg:w-1/2 px-4 py-2">
-              <details class="mb-4">
-                <summary class="font-semibold  bg-gray-200 rounded-md py-2 px-4">
-                  How do I get unbanned?
-                </summary>
-
-                <span>
-                  It seems you are from Imperfect Gamers, please click <a href="https://imperfectgamers.org/forum/forumdisplay.php?fid=3" class="text-red-600 hover:text-red-400">here</a> to submit an unban.
-                </span>
-              </details>
-            </div>
-            <div class="w-full lg:w-1/2 px-4 py-2">
-              <details class="mb-4">
-                <summary class="font-semibold  bg-gray-200 rounded-md py-2 px-4">
-                  How can I contact you?
-                </summary>
-				                <span>
-                <a href="https://imperfectgamers.org/forum/forumdisplay.php?fid=3" class="text-red-600 hover:text-red-400">Click here if Press</a>
-				<br>
-                <a href="https://imperfectgamers.org/forum/forumdisplay.php?fid=3" class="text-red-600 hover:text-red-400">Click here if User</a>
-				<br>
-                <a href="https://imperfectgamers.org/forum/forumdisplay.php?fid=3" class="text-red-600 hover:text-red-400">Click here for Advertiser</a>				
-                </span>
-              </details>
-            </div>
-          </div>
-		      <div class="grid col-span-1 md:flex items-center mt-10 justify-center">
-
-        <div class="md:mr-4">
-            <img class="md:w-40" src="http://cdn.imperfectandcompany.com/assets/483193522.png" alt="">
-        </div>
-        <div class="md:border-l-2 pl-4 p-2 col-span-2 text-justify md:w-1/2 mt-10 md:mt-0">
-            <p class="mt-4">
-             Responsible for one of the most major, incremental, community projects combining gamers to music.
-			 <br>
-https://imperfectgamers.org/
-<br>
-https://imperfectsounds.com/
-<br>	
-https://shop.imperfectandcompany.com/
-            </p>
-        </div>
-    </div>
-        </div>
-		
-      </section>
-    </div>
-	
-	
-
-
 	<section id="bottom-navigation" class="block fixed inset-x-0 bottom-0 z-10 bg-white shadow">
 		<div id="tabs" class="flex justify-between">
-			<a href="index.php" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
+			<a href="#" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
 				<svg width="25" height="25" viewBox="0 0 42 42" class="inline-block mb-1">
 			    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 			        <path d="M21.0847458,3.38674884 C17.8305085,7.08474576 17.8305085,10.7827427 21.0847458,14.4807396 C24.3389831,18.1787365 24.3389831,22.5701079 21.0847458,27.6548536 L21.0847458,42 L8.06779661,41.3066256 L6,38.5331279 L6,26.2681048 L6,17.2542373 L8.88135593,12.4006163 L21.0847458,2 L21.0847458,3.38674884 Z" fill="currentColor" fill-opacity="0.1"></path>
@@ -152,7 +84,7 @@ https://shop.imperfectandcompany.com/
 				</svg>
 				<span class="tab tab-home block text-xs">Home</span>
 			</a>
-			<a href="login/" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
+			<a href="../login/" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
 				<svg width="25" height="25" viewBox="0 0 42 42" class="inline-block mb-1">
 			    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 		        <path d="M14.7118754,20.0876892 L8.03575361,20.0876892 C5.82661462,20.0876892 4.03575361,18.2968282 4.03575361,16.0876892 L4.03575361,12.031922 C4.03575361,8.1480343 6.79157254,4.90780265 10.4544842,4.15995321 C8.87553278,8.5612583 8.1226025,14.3600511 10.9452499,15.5413938 C13.710306,16.6986332 14.5947501,18.3118357 14.7118754,20.0876892 Z M14.2420017,23.8186831 C13.515543,27.1052019 12.7414284,30.2811559 18.0438552,31.7330419 L18.0438552,33.4450645 C18.0438552,35.6542035 16.2529942,37.4450645 14.0438552,37.4450645 L9.90612103,37.4450645 C6.14196811,37.4450645 3.09051926,34.3936157 3.09051926,30.6294627 L3.09051926,27.813861 C3.09051926,25.604722 4.88138026,23.813861 7.09051926,23.813861 L14.0438552,23.813861 C14.1102948,23.813861 14.1763561,23.8154808 14.2420017,23.8186831 Z M20.7553776,32.160536 C23.9336213,32.1190063 23.9061943,29.4103976 33.8698747,31.1666916 C34.7935223,31.3295026 35.9925894,31.0627305 37.3154077,30.4407183 C37.09778,34.8980343 33.4149547,38.4450645 28.9036761,38.4450645 C24.9909035,38.4450645 21.701346,35.7767637 20.7553776,32.160536 Z" fill="currentColor" opacity="0.1"></path>
@@ -165,7 +97,7 @@ https://shop.imperfectandcompany.com/
 		        </g>
 		    	</g>
 				</svg>
-				<span class="tab tab-account block text-xs">Log In</span>
+				<span class="tab tab-account block text-xs">Log in</span>
 			</a>
 		</div>
 	</section>

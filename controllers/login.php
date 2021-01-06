@@ -49,12 +49,13 @@
                 $password = password_verify($password_signin, $pass_word);
 				
 				       if($email_signin == $email && $password_signin == $password) {
-                       header("Location: ./dashboard.php");
-                       
+                       header("Location: ../home");
                        $_SESSION['id'] = $id;
                        $_SESSION['username'] = $username;
                        $_SESSION['email'] = $email;
                        $_SESSION['token'] = $token;
+					  
+
 					   } else {
                         $emailPwdErr = '<div class="text-red-500">
                                 Either email or password is incorrect.
