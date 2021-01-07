@@ -32,8 +32,7 @@
 
 <body>
 
-    <!-- Header -->
-    <?php include('../header.php'); ?>
+
 
     <!-- Login script -->
     <?php include('../controllers/register.php'); ?>
@@ -178,13 +177,16 @@
 </div>                      
 
 
+<div>
+      <section class="text-gray-700">
+        <div class="container px-5 py-12 mx-auto">
 
-		      <div class="grid col-span-1 md:flex pb-20 items-center mt-10 justify-center">
+		      <div class="grid col-span-1 md:flex items-center mt-10 justify-center">
 
         <div class="md:mr-4">
-            <img class="md:w-40" src="https://cdn.imperfectandcompany.com/assets/483193522.png" alt="">
+            <img class="md:w-40" src="http://cdn.imperfectandcompany.com/assets/483193522.png" alt="">
         </div>
-        <div class="md:border-l-2 pl-4 p-2 col-span-2 text-justify md:w-1/2 mt-10 md:mt-0">
+        <div class="md:border-l-2 pl-4 p-2 col-span-2 md:w-1/2 mt-10 md:mt-0">
             <p class="mt-4">
              Responsible for one of the most major, incremental, community projects combining gamers to music.
 			 <br>
@@ -196,6 +198,10 @@ https://shop.imperfectandcompany.com/
             </p>
         </div>
     </div>
+        </div>
+		
+      </section>
+    </div>
 	
 	
 
@@ -203,7 +209,7 @@ https://shop.imperfectandcompany.com/
 
 	<section id="bottom-navigation" class="block fixed inset-x-0 bottom-0 z-10 bg-white shadow">
 		<div id="tabs" class="flex justify-between">
-			<a href="index.php" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
+			<a href="../" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
 				<svg width="25" height="25" viewBox="0 0 42 42" class="inline-block mb-1">
 			    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 			        <path d="M21.0847458,3.38674884 C17.8305085,7.08474576 17.8305085,10.7827427 21.0847458,14.4807396 C24.3389831,18.1787365 24.3389831,22.5701079 21.0847458,27.6548536 L21.0847458,42 L8.06779661,41.3066256 L6,38.5331279 L6,26.2681048 L6,17.2542373 L8.88135593,12.4006163 L21.0847458,2 L21.0847458,3.38674884 Z" fill="currentColor" fill-opacity="0.1"></path>

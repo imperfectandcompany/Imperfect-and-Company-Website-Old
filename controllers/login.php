@@ -2,7 +2,7 @@
    
     // Database connection
     include('../config/db.php');
-	
+	$login = false;
 	    global $wrongPwdErr, $accountNotExistErr, $emailPwdErr, $email_empty_err, $pass_empty_err;
 		
     if(isset($_POST['login'])) {
@@ -49,12 +49,13 @@
                 $password = password_verify($password_signin, $pass_word);
 				
 				       if($email_signin == $email && $password_signin == $password) {
-                       header("Location: ../home");
+						$login = true;
+						header("Location: ../index.php");
                        $_SESSION['id'] = $id;
                        $_SESSION['username'] = $username;
                        $_SESSION['email'] = $email;
                        $_SESSION['token'] = $token;
-					  
+
 
 					   } else {
                         $emailPwdErr = '<div class="text-red-500">

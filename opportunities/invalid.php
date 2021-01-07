@@ -1,20 +1,23 @@
+<?php
+    include('../config/db.php');
+?>
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Imperfect and Company - Log in</title>
+        <title>Imperfect and Company - Invalid Opportunity</title>
 		<!-- CSS -->
 		<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 		<!-- Desired link -->
 		<link rel="canonical" href="https://imperfectandcompany.com/">
 		<!-- Favicon -->
-		<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-		<link rel="manifest" href="../site.webmanifest">
-		<link rel="mask-icon" href="..//safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+		<link rel="manifest" href="site.webmanifest">
+		<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
 		<!-- SEO METADATA -->
-		<meta name="description" content="Imperfect and Company. Log in an registration page." />
-		<meta name="keywords" content="imperfectandcompany, login, enter, authwall, imperfect and company, imperfectgamers, postogon, imperfect gamers, imperfectsounds, imperfect sounds, internships" />
+		<meta name="description" content="Imperfect and Company. In a world of people trying to be perfect, sometimes you gotta own that you're imperfect but not alone, you got company." />
+		<meta name="keywords" content="imperfectandcompany, imperfect and company, imperfectgamers, postogon, imperfect gamers, imperfectsounds, imperfect sounds, internships" />
 		<meta name="msapplication-TileColor" content="#2d89ef">
 		<meta property="og:title" content="Imperfect and Company - Internships Available" />
 		<meta property="og:description" content="Imperfect but not alone, you got company. Imperfect and Company is accepting internship applications." />
@@ -31,10 +34,7 @@
 
 <body>
 
-    <!-- Login script -->
-    <?php include('../controllers/login.php'); ?>
-	
-	
+
     <div class="flex justify-center text-xl font-bold tracking-widest text-gray-300">
 <h1>Imperfect and Company</h1>
 
@@ -47,92 +47,34 @@
 
 <div class="w-full h-screen">
 
-<div class="container max-w-full mx-auto md:py-6 px-6">
-  <div class="max-w-sm mx-auto px-6">
-        <div class="relative flex flex-wrap">
-            <div class="w-full relative">
-                <div class="md:mt-6">
-                    <div class="text-center font-semibold text-black">
-                        Log In
-					<?php echo $accountNotExistErr; ?>
-                    <?php echo $emailPwdErr; ?>
+        <section class="bg-white py-10">
+            <div class="max-w-5xl px-6 mx-auto text-center">
+                <h2 class="text-2xl font-semibold text-gray-800">Opportunities</h2>
 
-                    <?php echo $email_empty_err; ?>
-                    <?php echo $pass_empty_err; ?>
-                    </div>
-                    <form class="mt-8" method="post">
-                        <div class="mx-auto max-w-lg ">
-                            <div class="py-1">
-                                <span class="px-1 text-sm text-gray-600">Email</span>
-                                <input placeholder="" type="email" name="email"
-                                       class="text-md block px-3 py-2 rounded-lg w-full
-                bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">
-                            </div>
-                            <div class="py-1">
-                                <span class="px-1 text-sm text-gray-600">Password</span>
-                                <input placeholder="" type="password" name="password" 
-                                       class="text-md block px-3 py-2 rounded-lg w-full
-                bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">
-                            </div>
-
-                            <button type="submit" name="login" id="login" class="mt-3 text-lg font-semibold
-            bg-gray-800 w-full text-white rounded-lg
-            px-6 py-3 block shadow-xl hover:text-white hover:bg-black">
-                                Log in
-                            </button>
+                <div class="flex flex-col items-center justify-center mt-6">
+                    <a class="max-w-2xl w-full block bg-white shadow-md rounded-md border-t-4 border-red-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" href="#">
+                        <div class="flex items-center px-4 py-2">
+                            <h3 class="text-lg font-medium text-gray-700 text-center">This listing is not available.</h3>
                         </div>
-                    </form>
+                    </a>
+            </div>
+			
+			                <div class="flex items-center justify-center mt-12">
+                    <a class="flex items-center text-gray-600 hover:underline hover:text-gray-500" href="../opportunities/jobs.php?listing=0">
+                        <span>Go back</span>
 
-				
-				
-                    <div class="text-sm font-semibold block py-6 flex justify-center">
-                        <a href="../register/"
-                           class="text-black font-normal">No account? 
-                            <span class="text-black  border-b-2 border-gray-200 hover:border-gray-500 font-semibold">
-            Register        </span>
-                        </a>
-                    </div>
-
+                        <svg class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
-        </div>
-    </div>
-</div>                      
 
+        </section>                             
 
-
-<div>
-      <section class="text-gray-700">
-        <div class="container px-5 py-12 mx-auto">
-
-		      <div class="grid col-span-1 md:flex items-center mt-10 justify-center">
-
-        <div class="md:mr-4">
-            <img class="md:w-40" src="http://cdn.imperfectandcompany.com/assets/483193522.png" alt="">
-        </div>
-        <div class="md:border-l-2 pl-4 p-2 col-span-2 md:w-1/2 mt-10 md:mt-0">
-            <p class="mt-4">
-             Responsible for one of the most major, incremental, community projects combining gamers to music.
-			 <br>
-https://imperfectgamers.org/
-<br>
-https://imperfectsounds.com/
-<br>	
-https://shop.imperfectandcompany.com/
-            </p>
-        </div>
-    </div>
-        </div>
-		
-      </section>
-    </div>
-	
-	
-
-
-		<section id="bottom-navigation" class="block fixed inset-x-0 bottom-0 z-10 bg-white shadow">
+	<section id="bottom-navigation" class="block fixed inset-x-0 bottom-0 z-10 bg-white shadow">
 		<div id="tabs" class="flex justify-between">
-			<a href="../index.php" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
+			<a href="#" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
 				<svg width="25" height="25" viewBox="0 0 42 42" class="inline-block mb-1">
 			    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 			        <path d="M21.0847458,3.38674884 C17.8305085,7.08474576 17.8305085,10.7827427 21.0847458,14.4807396 C24.3389831,18.1787365 24.3389831,22.5701079 21.0847458,27.6548536 L21.0847458,42 L8.06779661,41.3066256 L6,38.5331279 L6,26.2681048 L6,17.2542373 L8.88135593,12.4006163 L21.0847458,2 L21.0847458,3.38674884 Z" fill="currentColor" fill-opacity="0.1"></path>
@@ -144,7 +86,14 @@ https://shop.imperfectandcompany.com/
 				</svg>
 				<span class="tab tab-home block text-xs">Home</span>
 			</a>
-			<a href="../register" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
+			<a href="<?php
+						if (!isset($_SESSION['username'])) {
+						echo '../login';
+						}
+						else{
+						echo '../controllers/logout.php';
+						}
+				?>" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
 				<svg width="25" height="25" viewBox="0 0 42 42" class="inline-block mb-1">
 			    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 		        <path d="M14.7118754,20.0876892 L8.03575361,20.0876892 C5.82661462,20.0876892 4.03575361,18.2968282 4.03575361,16.0876892 L4.03575361,12.031922 C4.03575361,8.1480343 6.79157254,4.90780265 10.4544842,4.15995321 C8.87553278,8.5612583 8.1226025,14.3600511 10.9452499,15.5413938 C13.710306,16.6986332 14.5947501,18.3118357 14.7118754,20.0876892 Z M14.2420017,23.8186831 C13.515543,27.1052019 12.7414284,30.2811559 18.0438552,31.7330419 L18.0438552,33.4450645 C18.0438552,35.6542035 16.2529942,37.4450645 14.0438552,37.4450645 L9.90612103,37.4450645 C6.14196811,37.4450645 3.09051926,34.3936157 3.09051926,30.6294627 L3.09051926,27.813861 C3.09051926,25.604722 4.88138026,23.813861 7.09051926,23.813861 L14.0438552,23.813861 C14.1102948,23.813861 14.1763561,23.8154808 14.2420017,23.8186831 Z M20.7553776,32.160536 C23.9336213,32.1190063 23.9061943,29.4103976 33.8698747,31.1666916 C34.7935223,31.3295026 35.9925894,31.0627305 37.3154077,30.4407183 C37.09778,34.8980343 33.4149547,38.4450645 28.9036761,38.4450645 C24.9909035,38.4450645 21.701346,35.7767637 20.7553776,32.160536 Z" fill="currentColor" opacity="0.1"></path>
@@ -157,7 +106,15 @@ https://shop.imperfectandcompany.com/
 		        </g>
 		    	</g>
 				</svg>
-				<span class="tab tab-account block text-xs">Register</span>
+				<?php
+						if (!isset($_SESSION['username'])) {
+						echo '<span class="tab tab-account block text-xs">Log In</span>';
+						}
+						else{
+						echo '<span class="tab tab-account block text-xs">Log out</span>';
+						}
+				?>
+
 			</a>
 		</div>
 	</section>
