@@ -33,7 +33,7 @@
 <div class="m-auto max-w-6xl p-12">
    <div class="flex flex-col md:flex-row">
       <div class="md:w-1/2 max-w-md flex flex-col justify-center">
-         <div class="md:text-5xl text-2xl uppercase font-black">Join our team!</div>
+         <div class="md:text-5xl text-2xl uppercase font-black">Front-end Developer!</div>
          <div class="text-xl mt-4">We are always looking for new members to be a part of Imperfect and Company. Please log in through the button below or view our openings to get started!</div>
          <div class="my-5 h-16">
             <div class="shadow-md font-medium py-2 px-4 text-yellow-100
@@ -87,16 +87,16 @@
 
 
                 <div class="flex flex-col items-center justify-center mt-6">
-                    <a class="max-w-2xl w-full block bg-white shadow-md rounded-md border-t-4 border-indigo-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" href="jobs.php?listing=1">
+                    <a class="max-w-2xl w-full block bg-white shadow-md rounded-md border-t-4 border-indigo-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" href="../winter-2021-internship">
                         <div class="flex items-center justify-between px-4 py-2">
-                            <h3 class="text-lg font-medium text-gray-700">Fall 2021 Internship</h3>
+                            <h3 class="text-lg font-medium text-gray-700">Winter 2021 Internship</h3>
                             <span class="block text-gray-600 font-light text-sm">Posted on 1/3/2021</span>
                         </div>
                     </a>
             </div>
 			
                 <div class="flex flex-col items-center justify-center mt-6">
-                    <a class="max-w-2xl w-full block bg-white shadow-md rounded-md border-t-4 border-indigo-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" href="jobs.php?listing=2">
+                    <a class="max-w-2xl w-full block bg-white shadow-md rounded-md border-t-4 border-indigo-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" href="../front-end-developer">
                         <div class="flex items-center justify-between px-4 py-2">
                             <h3 class="text-lg font-medium text-gray-700">Front-end Developer</h3>
                             <span class="block text-gray-600 font-light text-sm">Posted on 1/3/2021</span>
@@ -105,7 +105,7 @@
             </div>
 			
 			                <div class="flex items-center justify-center mt-12">
-                    <a class="flex items-center text-gray-600 hover:underline hover:text-gray-500" href="./jobs.php?listing=none">
+                    <a class="flex items-center text-gray-600 hover:underline hover:text-gray-500" href="../../careers">
                         <span>View More</span>
 
                         <svg class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -115,7 +115,7 @@
                 </div>
             </div>
 
-        </section>       
+        </section>      
 
 <div class="flex bg-gray-100 py-24 justify-center">
     <div class="p-12 text-center max-w-2xl">
@@ -175,7 +175,7 @@ https://shop.imperfectandcompany.com/
 			</a>
 			<a href="<?php
 						if (!isset($_SESSION['username'])) {
-						echo '../login';
+						echo '../../login';
 						}
 						else{
 						echo '../controllers/logout.php';

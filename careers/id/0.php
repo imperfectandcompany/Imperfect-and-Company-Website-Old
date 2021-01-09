@@ -1,23 +1,20 @@
 <?php
-include('./config/db.php');
-if (isset($_SESSION['username'])) {
-header("location: ./home");
-}		
+    include('../config/db.php');
 ?>
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Imperfect and Company</title>
+        <title>Imperfect and Company - Opportunities</title>
 		<!-- CSS -->
 		<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 		<!-- Desired link -->
 		<link rel="canonical" href="https://imperfectandcompany.com/">
 		<!-- Favicon -->
-		<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 		<link rel="manifest" href="site.webmanifest">
-		<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="mask-icon" href="../safari-pinned-tab.svg" color="#5bbad5">
 		<!-- SEO METADATA -->
 		<meta name="description" content="Imperfect and Company. In a world of people trying to be perfect, sometimes you gotta own that you're imperfect but not alone, you got company." />
 		<meta name="keywords" content="imperfectandcompany, imperfect and company, imperfectgamers, postogon, imperfect gamers, imperfectsounds, imperfect sounds, internships" />
@@ -36,27 +33,42 @@ header("location: ./home");
 	
 
 <body>
-
-
-    <div class="flex justify-center text-xl font-bold tracking-widest text-gray-300">
-<h1>Imperfect and Company</h1>
-    </div>
-	
-    <!-- Bg white -->
-
-    <div class="max-w-screen-lg mx-auto text-center mt-4">
-	        <div class="mt-8 flex justify-center pb-3">
-            <div class="inline-flex rounded-md bg-indigo-500">
-                <a href="https://www.youtube.com/watch?v=c4UEpgb_JPE" target="_blank" class="text-gray-200 font-bold py-2 px-6">
-Rico & Lara - What's Love (Prod. PXNCH)
-                </a>
-		            </div>
-        </div>
-	<div class="justify-center">
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/c4UEpgb_JPE" class="w-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-	</div>
-
-    </div>	
+<div class="m-auto max-w-6xl p-12">
+   <div class="flex flex-col md:flex-row">
+      <div class="md:w-1/2 max-w-md flex flex-col justify-center">
+         <div class="md:text-5xl text-2xl uppercase font-black">Join our team!</div>
+         <div class="text-xl mt-4">We are always looking for new members to be a part of Imperfect and Company. Please log in through the button below or view our openings to get started!</div>
+         <div class="my-5 h-16">
+            <div class="shadow-md font-medium py-2 px-4 text-yellow-100
+               cursor-pointer bg-yellow-600 hover:bg-yellow-500 rounded text-lg text-center w-48"><a href="				<?php
+						if (!isset($_SESSION['username'])) {
+						echo '../login';
+						}
+						else{
+						echo '../apply';
+						}
+				?>">
+			   				<?php
+						if (!isset($_SESSION['username'])) {
+						echo 'Log in';
+						}
+						else{
+						echo 'Apply';
+						}
+				?></a>
+			   </div>
+         </div>
+      </div>
+      <div class="flex md:justify-end w-full md:w-1/2 -mt-5">
+         <div class="bg-dots">
+            <div class="shadow-2xl max-w-md z-10 rounded-lg mt-6 ml-4">
+               <img alt="card img" class="rounded-t" src="http://cdn.imperfectandcompany.com/assets/483193522.png"> 
+               <div class="text-2xl p-10 bg-white"><img alt="quote" class="float-left mr-1" src="https://assets-global.website-files.com/5b5a66e9f3166b36708705fa/5cf8fb1f994fb7168d0d66fb_quote-intro.svg">In a world of people trying to be perfect, sometimes you gotta own that you're imperfect but not alone, you got company</div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
 
 
 <div class="w-full h-screen">
@@ -65,7 +77,7 @@ Rico & Lara - What's Love (Prod. PXNCH)
 
         <section class="bg-white py-10">
 		
-				          <div class="text-center mb-10">
+		          <div class="text-center mb-10">
             <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">
               Work at Imperfect and Company
 
@@ -78,7 +90,7 @@ Rico & Lara - What's Love (Prod. PXNCH)
 
 
                 <div class="flex flex-col items-center justify-center mt-6">
-                    <a class="max-w-2xl w-full block bg-white shadow-md rounded-md border-t-4 border-indigo-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" href="careers/winter-2021-internship">
+                    <a class="max-w-2xl w-full block bg-white shadow-md rounded-md border-t-4 border-indigo-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" href="../careers/winter-2021-internship">
                         <div class="flex items-center justify-between px-4 py-2">
                             <h3 class="text-lg font-medium text-gray-700">Winter 2021 Internship</h3>
                             <span class="block text-gray-600 font-light text-sm">Posted on 1/3/2021</span>
@@ -87,7 +99,7 @@ Rico & Lara - What's Love (Prod. PXNCH)
             </div>
 			
                 <div class="flex flex-col items-center justify-center mt-6">
-                    <a class="max-w-2xl w-full block bg-white shadow-md rounded-md border-t-4 border-indigo-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" href="careers/front-end-developer">
+                    <a class="max-w-2xl w-full block bg-white shadow-md rounded-md border-t-4 border-indigo-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" href="../careers/front-end-developer">
                         <div class="flex items-center justify-between px-4 py-2">
                             <h3 class="text-lg font-medium text-gray-700">Front-end Developer</h3>
                             <span class="block text-gray-600 font-light text-sm">Posted on 1/3/2021</span>
@@ -96,7 +108,7 @@ Rico & Lara - What's Love (Prod. PXNCH)
             </div>
 			
 			                <div class="flex items-center justify-center mt-12">
-                    <a class="flex items-center text-gray-600 hover:underline hover:text-gray-500" href="./careers">
+                    <a class="flex items-center text-gray-600 hover:underline hover:text-gray-500" href="../careers">
                         <span>View More</span>
 
                         <svg class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -106,76 +118,31 @@ Rico & Lara - What's Love (Prod. PXNCH)
                 </div>
             </div>
 
-        </section>     
+        </section>       
 
-
-		
-
-<div>
-      <section class="text-gray-700">
-        <div class="container px-5 py-12 mx-auto">
-          <div class="text-center mb-10">
-            <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">
-              Frequently Asked Questions
-            </h1>
-            <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
-              The most commonly asked questions about our business and what
-              we do.
-            </p>
-          </div>
-          <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
-            <div class="w-full lg:w-1/2 px-4 py-2">
-              <details class="mb-4">
-                <summary class="font-semibold  bg-gray-200 rounded-md py-2 px-4">
-                  How do I get unbanned?
-                </summary>
-
-                <span>
-                  It seems you are from Imperfect Gamers, please click <a href="https://imperfectgamers.org/forum/forumdisplay.php?fid=3" class="text-red-600 hover:text-red-400">here</a> to submit an unban.
-                </span>
-              </details>
-            </div>
-            <div class="w-full lg:w-1/2 px-4 py-2">
-              <details class="mb-4">
-                <summary class="font-semibold  bg-gray-200 rounded-md py-2 px-4">
-                  How can I contact you?
-                </summary>
-				                <span>
-                <a href="https://imperfectgamers.org/forum/forumdisplay.php?fid=3" class="text-red-600 hover:text-red-400">Click here if Press</a>
-				<br>
-                <a href="https://imperfectgamers.org/forum/forumdisplay.php?fid=3" class="text-red-600 hover:text-red-400">Click here if User</a>
-				<br>
-                <a href="https://imperfectgamers.org/forum/forumdisplay.php?fid=3" class="text-red-600 hover:text-red-400">Click here for Advertiser</a>				
-                </span>
-              </details>
-            </div>
-          </div>
-
-        </div>
-		
-      </section>
-	  
-	  
-    </div>
-	
-	<div class="flex bg-gray-100 py-24 justify-center">
+<div class="flex bg-gray-100 py-24 justify-center">
     <div class="p-12 text-center max-w-2xl">
         <div class="md:text-3xl text-3xl font-bold">Want us to reach out?</div>
         <div class="text-xl font-normal mt-4">Click below to leave your details and we will get in touch within the next 24 hours.
         </div>
         <div class="mt-6 flex justify-center h-12 relative">
             <div class="flex shadow-md font-medium absolute py-2 px-4 text-green-100
-        cursor-pointer bg-green-600 rounded text-lg tr-mt  svelte-jqwywd">Contact us</div>
+        cursor-pointer bg-green-600 rounded text-lg tr-mt  svelte-jqwywd"><a href="">Contact us</a></div>
         </div>
     </div>
 </div>
-	
-			      <div class="grid col-span-1 md:flex items-center mt-10 justify-center">
+		
+
+<div>
+      <section class="text-gray-700">
+        <div class="container px-5 py-12 mx-auto">
+
+		      <div class="grid col-span-1 md:flex items-center mt-10 justify-center">
 
         <div class="md:mr-4">
             <img class="md:w-40" src="http://cdn.imperfectandcompany.com/assets/483193522.png" alt="">
         </div>
-        <div class="md:border-l-2 pl-4 pb-16 col-span-2 md:w-1/2 mt-10 md:mt-0">
+        <div class="md:border-l-2 pl-4 p-2 col-span-2 md:w-1/2 mt-10 md:mt-0">
             <p class="mt-4">
              Responsible for one of the most major, incremental, community projects combining gamers to music.
 			 <br>
@@ -187,11 +154,17 @@ https://shop.imperfectandcompany.com/
             </p>
         </div>
     </div>
+        </div>
+		
+      </section>
+    </div>
+	
+	
 
 
 	<section id="bottom-navigation" class="block fixed inset-x-0 bottom-0 z-10 bg-white shadow">
 		<div id="tabs" class="flex justify-between">
-			<a href="index.php" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
+			<a href="../index.php" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
 				<svg width="25" height="25" viewBox="0 0 42 42" class="inline-block mb-1">
 			    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 			        <path d="M21.0847458,3.38674884 C17.8305085,7.08474576 17.8305085,10.7827427 21.0847458,14.4807396 C24.3389831,18.1787365 24.3389831,22.5701079 21.0847458,27.6548536 L21.0847458,42 L8.06779661,41.3066256 L6,38.5331279 L6,26.2681048 L6,17.2542373 L8.88135593,12.4006163 L21.0847458,2 L21.0847458,3.38674884 Z" fill="currentColor" fill-opacity="0.1"></path>
@@ -205,10 +178,10 @@ https://shop.imperfectandcompany.com/
 			</a>
 			<a href="<?php
 						if (!isset($_SESSION['username'])) {
-						echo './login';
+						echo '../login';
 						}
 						else{
-						echo 'controllers/logout.php';
+						echo '../controllers/logout.php';
 						}
 				?>" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
 				<svg width="25" height="25" viewBox="0 0 42 42" class="inline-block mb-1">
