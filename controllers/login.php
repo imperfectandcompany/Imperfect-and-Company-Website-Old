@@ -1,5 +1,4 @@
 <?php
-   
     // Database connection
     include('../config/db.php');
 	$login = false;
@@ -9,20 +8,22 @@
         $email_signin        = $_POST['email'];
         $password_signin     = $_POST['password'];
 		
-		        // clean data 
+
+		
+		
+		 // clean data 
         $user_email = filter_var($email_signin, FILTER_SANITIZE_EMAIL);
-        $pswd = mysqli_real_escape_string($conn, $password_signin);
+        $pswd = $password_signin;
 		
 	   // Query if email exists in db
         $sql = "SELECT * From users WHERE email = '{$email_signin}' ";
-        $query = mysqli_query($conn, $sql);
-        $rowCount = mysqli_num_rows($query);
+		$sql = $pdo->prepare("SELECT * From users WHERE email = :email");
+		$sql->bindValue(":email", $email_signin);
+		try { $sql->execute();}
+		// If query fails, show the reason 
+		catch(PDOException $e){echo $e->getMessage();}
+		$rowCount = $sql->rowCount();
 		
-		      // If query fails, show the reason 
-        if(!$query){
-           die("SQL query failed: " . mysqli_error($connection));
-        }
-
         if(!empty($email_signin) && !empty($password_signin)){
             if(!preg_match("/^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=§!\?]{6,20}$/", $pswd)) {
                 $wrongPwdErr = '<div class="text-red-500">
@@ -37,7 +38,7 @@
                     </div>';
             } else {
                 // Fetch user data and store in php session
-                while($row = mysqli_fetch_array($query)) {
+                while($row = $sql->fetch(PDO::FETCH_ASSOC)) {
                     $id            = $row['id'];
                     $username     = $row['username'];
                     $email         = $row['email'];
