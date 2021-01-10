@@ -1,10 +1,7 @@
 <?php
-    include('../config/db.php');
-	    $pdo = pdo_connect_mysql();
 						if (isset($_SESSION['username'])) {
 						header("location: ../home");
 						}
-	
 ?>
 <!doctype html>
 <html lang="en">

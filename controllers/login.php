@@ -1,6 +1,7 @@
 <?php
     // Database connection
     include('../config/db.php');
+	$pdo = pdo_connect_mysql();
 	$login = false;
 	    global $wrongPwdErr, $accountNotExistErr, $emailPwdErr, $email_empty_err, $pass_empty_err;
 		
@@ -16,7 +17,6 @@
         $pswd = $password_signin;
 		
 	   // Query if email exists in db
-        $sql = "SELECT * From users WHERE email = '{$email_signin}' ";
 		$sql = $pdo->prepare("SELECT * From users WHERE email = :email");
 		$sql->bindValue(":email", $email_signin);
 		try { $sql->execute();}

@@ -1,14 +1,13 @@
 <?php
    
-    // Database connection
-    include('../config/db.php');
+    // Database connection    
+    include_once('../config/db.php');
+	    $pdo = pdo_connect_mysql();
     
     // Error & success messages
     global $success_msg, $email_exist, $tos_err, $user_exist, $u_NameErr, $_emailErr, $_passwordErr;
     global $uNameEmptyErr, $emailEmptyErr, $passwordEmptyErr, $cpasswordEmptyErr, $passMatchErr, $email_verify_err, $email_verify_success;
     
-
-	
     // Set empty form vars for validation mapping
     $_user_name = $_email = $_password = "";
 
@@ -16,51 +15,44 @@
         $username      = $_POST["username"];
         $email         = $_POST["email"];
         $password      = $_POST["password"];
-		$cpassword = $_POST['confirmpass'];
-
-			if (!isset($_POST['checkbox'])) { 
-			$tos_err = '                    <div class="px-1 text-sm text-red-600">
-                        You must accept the terms and conditions along with the information data policy!</div>';
-			}
-
+		$cpassword 	   = $_POST['confirmpass'];
+		$emailCount;
         // check if email already exist
-        $email_check_query = mysqli_query($conn, "SELECT * FROM users WHERE email = '{$email}' ");
-        $emailCount = mysqli_num_rows($email_check_query);
+		$esql = $pdo->prepare("SELECT COUNT(`id`) FROM `users` WHERE `email` = :email");
+		$esql->bindValue(":email", $_POST["email"]);
+		$esql->execute();
 
         // check if user already exist
-        $user_check_query = mysqli_query($conn, "SELECT * FROM users WHERE username = '{$username}' ");
-        $userCount = mysqli_num_rows($user_check_query);
-
-        // PHP validation
+		$usql = $pdo->prepare("SELECT COUNT(`id`) FROM `users` WHERE `username` = :username");
+		$usql->bindValue(":username", $_POST["username"]);
+		$usql->execute();
+		
         // Verify if form values are not empty
-        if(!empty($username) && !empty($email) && !empty($password) && !empty($cpassword)){
+        if(!empty($username) && !empty($email) && !empty($password) && !empty($cpassword) && isset($_POST['checkbox'])){
             
             // check if user email already exists
-            if($emailCount > 0) {
+            if($esql->fetchColumn() > 0) {
                 $email_exist = '
                     <div class="px-1 text-sm text-red-600">
                         User with email already exist!
+                    </div>';
+			}
+            elseif($usql->fetchColumn() > 0) {
+                $user_exist = '
+                    <div class="px-1 text-sm text-red-600">
+                        Username already taken!
                     </div>
                 ';
 			}
-			//check if username already exists
-            if($userCount > 0) {
-                $user_exist = '
-                    <div class="px-1 text-sm text-red-600">
-                        Username is already taken!
-                    </div>
-                ';	
-			}
-				// check if password matches confirm password
-            if($password !== $cpassword){
+            elseif($password !== $cpassword){
                 $passMatchErr = '<div class="px-1 text-sm text-red-600">
                     Password and confirm password do not match.
-                </div>';				
+                </div>';					
             } else {
                 // clean the form data before sending to database
-                $_user_name = mysqli_real_escape_string($conn, $username);
-                $_email = mysqli_real_escape_string($conn, $email);
-                $_password = mysqli_real_escape_string($conn, $password);
+                $_user_name = $username;
+                $_email = $email;
+                $_password = $password;
 
                 // perform validation
                 if(!preg_match("~^[a-z0-9]{1}[a-z0-9._-]{3,18}[a-z0-9]{1}$~i", $_user_name)) {
@@ -71,107 +63,77 @@
 							<li>Must have a length between 5-20 characters</li>
 							</ol>
                         </div>';
-                }
+				}
                 if(!filter_var($_email, FILTER_VALIDATE_EMAIL)) {
                     $_emailErr = '<div class="px-1 text-sm text-red-600">
                             Email format is invalid.
                         </div>';
                 }	
-                if(!preg_match("/^(?=.*\d)(?=.*[@#\-_$%^&+=ยง!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=ยง!\?]{8,20}$/", $_password)) {
+                if(!filter_var($_email, FILTER_VALIDATE_EMAIL)) {
+                    $_emailErr = '<div class="px-1 text-sm text-red-600">
+                            Email format is invalid.
+                        </div>';
+                }	
+                if(!preg_match("/^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=§!\?]{6,20}$/", $_password)) {
                     $_passwordErr = '<div class="px-1 text-sm text-red-600">
-                             Password must contain atleast one special chacter, lowercase, uppercase and digit.
+                             Password should be between 6 to 20 charcters long, contain atleast one special chacter, lowercase, uppercase and a digit.
                         </div>';
                 }
-			
                 
                 // Store the data in db, if all the preg_match condition met
                 if((preg_match("/^[a-zA-Z ]*$/", $_user_name)) &&
                  (filter_var($_email, FILTER_VALIDATE_EMAIL)) && 
                  (preg_match("/^(?=.*\d)(?=.*[@#\-_$%^&+=ยง!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=ยง!\?]{8,20}$/", $_password))){
 
+                    // Query
+                    $sql = $pdo->prepare("INSERT INTO users (username, email, password, token, is_active,
+                    date_time) VALUES (:username, :email, :password, 
+                    :token, '0', now())");
+                    
                     // Generate random activation token
                     $token = md5(rand().time());
 
                     // Password hash
-                    $password_hash = password_hash($password, PASSWORD_BCRYPT);
-
-                    // Query
-					if (isset($_POST['checkbox'])) {
-                    $sql = "INSERT INTO users (username, email, password, token, is_active,
-                    date_time) VALUES ('{$username}', '{$email}', '{$password_hash}', 
-                    '{$token}', '0', now())";
-                    
-					//set success message, in the future wait for verification email
-					$success_msg = '                    <div class="px-1 text-sm text-green-600">
-                        Mission Success!</div>';
+                    $password_hash = password_hash($password, PASSWORD_BCRYPT);					
+					
                     // Create mysql query
-                    $sqlQuery = mysqli_query($conn, $sql);
-					                    if(!$sqlQuery){
-                        die("MySQL query failed!" . mysqli_error($conn));
-                    }
-	
-				
-                    
-
-
-/*                     // Send verification email
-                    if($sqlQuery) {
-                        $msg = 'Click on the activation link to verify your email. <br><br>
-                          <a href="http://localhost/hah/register/user_verification.php?token='.$token.'"> Click here to verify email</a>
-                        ';
-
-                        // Create the Transport
-                        $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
-                        ->setUsername('your_email@gmail.com')
-                        ->setPassword('your_email_password');
-
-                        // Create the Mailer using your created Transport
-                        $mailer = new Swift_Mailer($transport);
-
-                        // Create a message
-                        $message = (new Swift_Message('Please Verify Email Address!'))
-                        ->setFrom([$email => $firstname . ' ' . $lastname])
-                        ->setTo($email)
-                        ->addPart($msg, "text/html")
-                        ->setBody('Hello! User');
-
-                        // Send the message
-                        $result = $mailer->send($message);
-                          
-                        if(!$result){
-                            $email_verify_err = '<div class="alert alert-danger">
-                                    Verification email coud not be sent!
-                            </div>';
-                        } else {
-                            $email_verify_success = '<div class="alert alert-success">
-                                Verification email has been sent!
-                            </div>';
-                        }
-                    } */
+					//bind placeholders to actual variable values
+					$sql->bindValue(":username", $username);
+					$sql->bindValue(":email", $email);
+					$sql->bindValue(":password", $password_hash);
+					$sql->bindValue(":token", $token);
+                    // Execute query
+                    $sql->execute(); 
+                $success_msg = '<div class="px-1 text-sm text-green-600">
+                    Registration successful!
+                </div>';					
                 }
+            }
         } else {
             if(empty($username)){
                 $uNameEmptyErr = '<div class="px-1 text-sm text-red-600">
                     Username cannot be blank.
                 </div>';
-            }
+					}
             if(empty($email)){
                 $emailEmptyErr = '<div class="px-1 text-sm text-red-600">
                     Email cannot be blank.
                 </div>';
-            }
+					}
             if(empty($password)){
                 $passwordEmptyErr = '<div class="px-1 text-sm text-red-600">
                     Password cannot be blank.
                 </div>';
-            }      
-            if(empty($cpassword)){
+					}    
+				if(empty($cpassword)){
                 $cpasswordEmptyErr = '<div class="px-1 text-sm text-red-600">
                     Confirm password cannot be blank.
                 </div>';
-            }    
+				} 
+			if (!isset($_POST['checkbox'])) { 
+			$tos_err = '                    <div class="px-1 text-sm text-red-600">
+                        You must accept the terms and conditions along with the information data policy!</div>';
+			}				
         }
     }
-		}
-	}
 ?>
