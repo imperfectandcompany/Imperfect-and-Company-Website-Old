@@ -1,12 +1,17 @@
 <?php
-    include('../../config/db.php');
-function ticket_header($title) {
+include('../../config/db.php');
+if (!isset($_SESSION['username'])) {
+header("location: ../../login");
+}		
+function contact_header($title) {
 echo'<!doctype html>
 <html lang="en">
     <head>
         <title>Imperfect and Company - '; echo $title; echo'</title>
 		<!-- CSS -->
 		<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+		<!-- SCRIPTS -->
+		<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 		<!-- Desired link -->
 		<link rel="canonical" href="https://imperfectandcompany.com/">
 		<!-- Favicon -->
@@ -28,25 +33,21 @@ echo'<!doctype html>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     </head>
 ';
 }
 
-function ticket_body(){
-echo '<body>
-    <nav>
-    	<div>
-    		<h1>Tickets</h1>
-            <a href="index.php"><i class="fas fa-ticket-alt"></i>Tickets</a>
-    	</div>
-    </nav>';	
+function contact_menu(){
+echo '        <a class="px-4 py-2 mt-2 text-sm font-bold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="../ticket/">Contact</a>';	
 }
 
 
-function ticket_footer() {
+
+function contact_footer() {
 echo '<section id="bottom-navigation" class="block fixed inset-x-0 bottom-0 z-10 bg-white shadow">
 		<div id="tabs" class="flex justify-between">
-			<a href="index.php" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
+			<a href="../index.php" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
 				<svg width="25" height="25" viewBox="0 0 42 42" class="inline-block mb-1">
 			    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 			        <path d="M21.0847458,3.38674884 C17.8305085,7.08474576 17.8305085,10.7827427 21.0847458,14.4807396 C24.3389831,18.1787365 24.3389831,22.5701079 21.0847458,27.6548536 L21.0847458,42 L8.06779661,41.3066256 L6,38.5331279 L6,26.2681048 L6,17.2542373 L8.88135593,12.4006163 L21.0847458,2 L21.0847458,3.38674884 Z" fill="currentColor" fill-opacity="0.1"></path>
@@ -88,6 +89,9 @@ echo '<section id="bottom-navigation" class="block fixed inset-x-0 bottom-0 z-10
 			</a>
 		</div>
 	</section>
+	</div>
+	</div>
+	</div>
 </body>
 </html>
 ';
