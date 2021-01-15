@@ -1,0 +1,14 @@
+//for job listings
+CREATE TABLE application_jobs(
+    ID int NOT NULL AUTO_INCREMENT,
+    Title varchar(255) NOT NULL,
+    Description MEDIUMTEXT NOT NULL,
+    Requirements TEXT NOT NULL,
+    Notes TEXT,
+    Date_Posted DATE NOT NULL,
+    Date_Deadline DATE NOT NULL,
+    PRIMARY KEY(ID)
+    );
+
+INSERT INTO `application_jobs` (`ID`,`Title`,`Description`,`Requirements`,`Date_Posted`,`Date_Deadline`)
+VALUES (1,"Winter 2021 Engineering Internship","We are looking for individuals that are passionate in taking ideas from concept to idea. During the course of your 12 weeks with Imperfect and Company you will attend meetings with a small team of developers, designers, and a manager. For each week of the first three weeks of this internship you will be in three core roles: development, designing and testing, lastly management and organization. After we get to know you and your interests, you will have the choice of deciding what you want your role to be for the remainder of the internship.","To be considered as a candidate for the Winter 2021 Engineering Internship, you must be able to do the following: Attend weekly Microsoft Team meetings, dependent on your schedule. Be an undergraduate student with a concentration in Computer Science or any related Major. Be enrolled as a declared Engineering Major or candiate. Have 3-5 hours available a week to work indepedently. Completed at least one semester of College or University.",CURDATE(),CURDATE());

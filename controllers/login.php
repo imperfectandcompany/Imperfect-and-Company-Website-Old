@@ -51,6 +51,7 @@
 				
 				       if($email_signin == $email && $password_signin == $password) {
 						$login = true;
+
 						header("Location: ../index.php");
                        $_SESSION['id'] = $id;
                        $_SESSION['username'] = $username;
